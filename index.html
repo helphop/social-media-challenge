@@ -219,9 +219,7 @@
             </div>
           </div>
         </div>
-
-        </div>
-
+      </div>
       </div>
     </section>
   </main>
@@ -229,5 +227,11 @@
       Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
       Coded by <a href="#">Chell Gouda</a>.
     </div>
+    <script>
+      const my_switch = document.getElementById('switch');
+      my_switch.addEventListener('click', () => {
+        document.querySelector('body').classList.toggle("bg-dark");
+      })
+    </script>
   </body>
 </html>

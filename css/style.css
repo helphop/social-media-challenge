@@ -4,6 +4,7 @@
   --clr-light-green-100: hsl(146, 68%, 55%);
   --clr-light-100: hsl(225, 100%, 98%);
   --clr-light-200: hsl(227, 47%, 96%);
+  --clr-light-250: hsl(227, 33%, 91%);
   --clr-light-300: hsl(230, 22%, 74%);
   --clr-light-400: hsl(228, 12%, 44%);
   --clr-light-500: hsl(230, 17%, 14%);
@@ -11,7 +12,7 @@
   --clr-dark-200:  hsl(232, 19%, 15%) //top bg pattern
   --clr-dark-300: hsl(228, 28%, 20%);
   --clr-dark-400: hsl(228, 34%, 66%);
-  --clr-accent-100: hsl(163, 72%, 41%)
+  --clr-accent-100: hsl(163, 72%, 41%);
   --clr-accent-200: hsl(356, 69%, 56%);
   --br: 1rem;
   --spacer: 1rem;
@@ -32,11 +33,6 @@
   --lh-300: 1.3;
   --lh-400: 1.4;
   --lh-500: 1.5; }
-
-@media (min-width: 40em) {
-  :root {
-    --fs-600: 1.296rem;
-    --fs-700: 2rem; } }
 
 *,
 *::before,
@@ -96,17 +92,30 @@ input:focus {
 
 .split-auto {
   display: grid;
-  gap: var(--gap, 1rem);
+  gap: var(--gap, 2rem);
   grid-template-columns: repeat(auto-fit, minmax(var(--min, min-content), 1fr)); }
 
 .split {
   display: grid;
-  gap: var(--gap, 1rem); }
+  gap: var(--gap, 1rem);
+  grid-auto-columns: 1fr; }
 
 @media (min-width: 40em) {
   .split {
     grid-auto-flow: column;
-    grid-auto-columns: 1fr; } }
+    grid-auto-columns: auto; } }
+
+.space-bt {
+  justify-content: space-between; }
+
+.justify-ic {
+  justify-items: center; }
+
+.justify-cc {
+  justify-content: center; }
+
+.align-ic {
+  align-items: center; }
 
 a {
   color: inherit;
@@ -115,7 +124,7 @@ a {
 
 .bg-dark {
   --bg: red;
-  --fg: blue; }
+  --fg-primary: blue; }
 
 body {
   font-family: var(--ff-primary);
@@ -123,7 +132,97 @@ body {
   font-weight: var(--fw-400);
   line-height: var(--lh-500);
   background: var(--bg, var(--clr-neutral-100));
-  color: var(--fg, var(--clr-light-500)); }
+  color: var(--fg-primary, var(--clr-light-400)); }
+
+h1 {
+  font-size: var(--fs-500);
+  color: var(--clr-light-500); }
+
+h1,
+.title {
+  color: var(--fg-secondary, var(--clr-light-500));
+  font-weight: var(--fw-700); }
+
+h2 {
+  font-size: var(--fs-400);
+  color: var(--clr-light-400); }
+
+.subtitle {
+  font-weight: var(--fw-700); }
+
+.card .title {
+  font-size: var(--fs-600);
+  line-height: var(--lh-100); }
+
+.card-lg .title {
+  font-size: var(--fs-700); }
+
+.card-lg .subtitle {
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-weight: var(--fw-400); }
+
+.trend-up,
+.trend-down {
+  font-size: var(--fs-200); }
+
+.trend-up {
+  color: var(--clr-accent-100); }
+
+.trend-down {
+  color: var(--clr-accent-200); }
+
+header {
+  background: var(--bg, var(--clr-light-100));
+  padding-bottom: 8rem;
+  border-radius: 0 0 var(--br) var(--br); }
+
+.container {
+  margin: 0 auto;
+  max-width: 73.5rem;
+  padding: 2rem; }
+
+.header__info {
+  padding-bottom: var(--spacer);
+  border-bottom: 1px solid var(--clr-light-500); }
+  @media (min-width: 40em) {
+    .header__info {
+      border-bottom: none; } }
+
+main {
+  top: -150px;
+  position: relative; }
+
+.cards {
+  --min: 15rem;
+  --gap: 2rem; }
+
+.card {
+  background: var(--bg-card, var(--clr-light-200));
+  width: 100%;
+  text-align: center;
+  padding: 1.5rem; }
+  .card:hover {
+    background: var(--bg-card--hover, var(--clr-light-250)); }
+
+.card__header img, .card__header .name {
+  display: inline-block; }
+
+.card__header img {
+  margin: 0 0.5rem -5px 0; }
+
+.overview .card__header,
+.overview .card__body {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: space-between;
+  align-items: end; }
+
+.switch {
+  gap: 0.25rem;
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: space-between; }
 
 input[type=checkbox] {
   height: 0;
@@ -135,7 +234,7 @@ label {
   text-indent: -9999px;
   width: 50px;
   height: 25px;
-  background: grey;
+  background: linear-gradient(45deg, var(--clr-light-blue-100), var(--clr-light-green-100));
   display: block;
   border-radius: 25px;
   position: relative; }
@@ -152,7 +251,7 @@ label:after {
   transition: 0.3s; }
 
 input:checked + label {
-  background: #bada55; }
+  background: var(--clr-light-300); }
 
 input:checked + label:after {
   left: calc(100% - 1.25px);
